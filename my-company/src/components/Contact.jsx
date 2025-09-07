@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,11 +13,10 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Form submitted!");
-    // ممكن فيما بعد تضيف إرسال فعلي عبر API
     setFormData({ name: "", email: "", message: "" });
   };
 
-  const inputStyle = {
+  const fieldStyle = {
     display: "block",
     width: "100%",
     maxWidth: 520,
@@ -31,14 +30,14 @@ export default function Contact() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Contact Us</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>
         <input
           type="text"
           name="name"
           placeholder="Your Name"
           value={formData.name}
           onChange={handleChange}
-          style={inputStyle}
+          style={fieldStyle}
         />
         <input
           type="email"
@@ -46,7 +45,7 @@ export default function Contact() {
           placeholder="Your Email"
           value={formData.email}
           onChange={handleChange}
-          style={inputStyle}
+          style={fieldStyle}
         />
         <textarea
           name="message"
@@ -54,7 +53,7 @@ export default function Contact() {
           value={formData.message}
           onChange={handleChange}
           rows={5}
-          style={{ ...inputStyle, resize: "vertical" }}
+          style={{ ...fieldStyle, resize: "vertical" }}
         />
         <button
           type="submit"

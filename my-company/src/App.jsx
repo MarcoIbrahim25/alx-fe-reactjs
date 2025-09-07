@@ -1,15 +1,13 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Contact from "./pages/Contact";
+import Home from "./components/Home";
+import About from "./components/About";
+import Services from "./components/Services";
+import Contact from "./components/Contact";
 
 export default function App() {
   return (
-    <div style={{ fontFamily: "system-ui, Arial, sans-serif" }}>
+    <div>
       <Navbar />
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "20px" }}>
         <Routes>
@@ -19,7 +17,6 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
-      <Footer />
     </div>
   );
 }
