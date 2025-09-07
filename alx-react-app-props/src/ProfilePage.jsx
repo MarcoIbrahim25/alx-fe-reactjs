@@ -1,7 +1,9 @@
+
+import React from "react";
 import UserInfo from "./UserInfo";
 
 function ProfilePage() {
-  return <UserInfo />; // بدون props
+  return <UserInfo />; 
 }
 
 export default ProfilePage;
