@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import UserProfile from "./components/UserProfile";
 import Counter from "./components/Counter";
 import ProfilePage from "./ProfilePage";
-import { UserContext } from "./UserContext";
+import { UserContext } from "./context/UserContext";
 function App() {
   const [count, setCount] = useState(0);
   const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
