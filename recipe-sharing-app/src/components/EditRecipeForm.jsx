@@ -14,8 +14,8 @@ export default function EditRecipeForm({ id }) {
     }
   }, [recipe]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     updateRecipe(id, { title: title.trim(), description: description.trim() });
   }
 
@@ -28,7 +28,7 @@ export default function EditRecipeForm({ id }) {
         <input
           id="edit-title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
         />
       </div>
 
@@ -37,7 +37,7 @@ export default function EditRecipeForm({ id }) {
         <textarea
           id="edit-desc"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(event) => setDescription(event.target.value)}
         />
       </div>
 
