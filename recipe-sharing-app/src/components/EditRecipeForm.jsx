@@ -1,39 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useRecipeStore from "./recipeStore";
 
-export default function AddRecipeForm() {
-  const addRecipe = useRecipeStore((s) => s.addRecipe);
+export default function EditRecipeForm({ id }) {
+  const recipe = useRecipeStore((s) => s.recipes.find((r) => r.id === id));
+  const updateRecipe = useRecipeStore((s) => s.updateRecipe);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  useEffect(() => {
+    if (recipe) {
+      setTitle(recipe.title || "");
+      setDescription(recipe.description || "");
+    }
+  }, [recipe]);
+
   function handleSubmit(e) {
     e.preventDefault();
-    if (!title.trim()) return;
-    addRecipe({
-      id: Date.now(),
-      title: title.trim(),
-      description: description.trim(),
-    });
-    setTitle("");
-    setDescription("");
+    updateRecipe(id, { title: title.trim(), description: description.trim() });
   }
 
+  if (!recipe) return null;
+
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{ marginBottom: 16, textAlign: "left" }}
-    >
+    <form onSubmit={handleSubmit} style={{ marginTop: 16 }}>
       <div style={{ marginBottom: 8 }}>
-        <label htmlFor="title" style={{ display: "block", marginBottom: 4 }}>
+        <label
+          htmlFor="edit-title"
+          style={{ display: "block", marginBottom: 4 }}
+        >
           Title
         </label>
         <input
-          id="title"
-          type="text"
-          placeholder="Enter recipe title..."
+          id="edit-title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required
           style={{
             width: "100%",
             padding: 8,
@@ -42,17 +42,18 @@ export default function AddRecipeForm() {
           }}
         />
       </div>
-
       <div style={{ marginBottom: 8 }}>
-        <label htmlFor="desc" style={{ display: "block", marginBottom: 4 }}>
+        <label
+          htmlFor="edit-desc"
+          style={{ display: "block", marginBottom: 4 }}
+        >
           Description
         </label>
         <textarea
-          id="desc"
-          placeholder="Enter recipe description..."
+          id="edit-desc"
+          rows={3}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          rows={3}
           style={{
             width: "100%",
             padding: 8,
@@ -62,7 +63,6 @@ export default function AddRecipeForm() {
           }}
         />
       </div>
-
       <button
         type="submit"
         style={{
@@ -75,7 +75,7 @@ export default function AddRecipeForm() {
           fontWeight: 600,
         }}
       >
-        Add Recipe
+        Save Changes
       </button>
     </form>
   );

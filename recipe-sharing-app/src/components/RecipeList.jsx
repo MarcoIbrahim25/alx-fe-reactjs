@@ -1,8 +1,8 @@
-// src/components/RecipeList.jsx
+import { Link } from "react-router-dom";
 import useRecipeStore from "./recipeStore";
 
 export default function RecipeList() {
-  const recipes = useRecipeStore((state) => state.recipes);
+  const recipes = useRecipeStore((s) => s.recipes);
 
   if (!recipes.length) {
     return (
@@ -25,7 +25,9 @@ export default function RecipeList() {
             background: "#fafafa",
           }}
         >
-          <h3 style={{ margin: "0 0 6px", fontWeight: 600 }}>{recipe.title}</h3>
+          <h3 style={{ margin: "0 0 6px", fontWeight: 600 }}>
+            <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
+          </h3>
           <p style={{ margin: 0, color: "#444" }}>{recipe.description}</p>
         </div>
       ))}
