@@ -13,9 +13,12 @@ export default function RecipeDetails() {
   if (!recipe) return <p>Recipe not found.</p>;
 
   return (
-    <div style={{ textAlign: "left" }}>
-      <h2 style={{ marginTop: 0 }}>{recipe.title}</h2>
+    <div>
+      <h2>{recipe.title}</h2>
       <p>{recipe.description}</p>
+      <p>
+        <strong>ID:</strong> {recipe.id}
+      </p>
       <EditRecipeForm id={recipeId} />
       <DeleteRecipeButton id={recipeId} />
     </div>
