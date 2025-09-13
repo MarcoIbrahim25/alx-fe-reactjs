@@ -1,5 +1,6 @@
 import useRecipeStore from "./recipeStore";
 import { Link } from "react-router-dom";
+import FavoriteToggleButton from "./FavoriteToggleButton";
 
 export default function RecipeList() {
   const recipes = useRecipeStore((s) => s.recipes);
@@ -35,6 +36,7 @@ export default function RecipeList() {
             <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
           </h3>
           <p style={{ margin: 0, color: "#444" }}>{recipe.description}</p>
+          <FavoriteToggleButton id={recipe.id} />
         </div>
       ))}
     </div>

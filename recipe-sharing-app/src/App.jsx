@@ -3,6 +3,8 @@ import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
 import SearchBar from "./components/SearchBar";
+import FavoritesList from "./components/FavoritesList";
+import RecommendationsList from "./components/RecommendationsList";
 
 export default function App() {
   return (
@@ -18,7 +20,7 @@ export default function App() {
       >
         <div
           style={{
-            width: 520,
+            width: 620,
             maxWidth: "100%",
             background: "#fff",
             padding: 20,
@@ -39,6 +41,8 @@ export default function App() {
                   <SearchBar />
                   <AddRecipeForm />
                   <RecipeList />
+                  <FavoritesList />
+                  <RecommendationsList />
                 </>
               }
             />
