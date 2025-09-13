@@ -1,20 +1,26 @@
-import { Link } from "react-router-dom";
 import useRecipeStore from "./recipeStore";
+import { Link } from "react-router-dom";
 
 export default function RecipeList() {
   const recipes = useRecipeStore((s) => s.recipes);
+  const filteredRecipes = useRecipeStore((s) => s.filteredRecipes);
+  const searchTerm = useRecipeStore((s) => s.searchTerm);
 
-  if (!recipes.length) {
+  const toShow = searchTerm ? filteredRecipes : recipes;
+
+  if (!toShow.length) {
     return (
       <p style={{ color: "#555" }}>
-        No recipes yet… Add your first recipe using the form above 👆
+        {searchTerm
+          ? "No matches found."
+          : "No recipes yet… Add your first recipe using the form above 👆"}
       </p>
     );
   }
 
   return (
     <div style={{ textAlign: "left" }}>
-      {recipes.map((recipe) => (
+      {toShow.map((recipe) => (
         <div
           key={recipe.id}
           style={{
