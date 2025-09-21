@@ -7,19 +7,13 @@ const api = axios.create({
   },
 });
 
-
 api.interceptors.request.use((config) => {
   const token = import.meta.env.VITE_GITHUB_TOKEN;
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-export const searchUsers = async (q) => {
-  const { data } = await api.get("/search/users", { params: { q } });
-  return data; // فيه total_count, items[]
-};
-
-export const getUser = async (username) => {
+export const fetchUserData = async (username) => {
   const { data } = await api.get(`/users/${username}`);
   return data;
 };

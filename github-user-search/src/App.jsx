@@ -1,59 +1,56 @@
 import { useState } from "react";
-import { searchUsers } from "./services/github";
-import UserCard from "./components/UserCard";
+import Search from "./components/Search";
+import { fetchUserData } from "./services/github";
 
 export default function App() {
-  const [q, setQ] = useState("");
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState([]);
   const [error, setError] = useState("");
 
-  const onSearch = async (e) => {
-    e.preventDefault();
-    if (!q.trim()) return;
+  const handleSearch = async (username) => {
     setLoading(true);
     setError("");
+    setUser(null);
     try {
-      const data = await searchUsers(q.trim());
-      setResults(data.items ?? []);
+      const data = await fetchUserData(username);
+      setUser(data);
     } catch (err) {
-      setError("Something went wrong. Try again.");
+      setError("Looks like we can't find the user");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div style={{ maxWidth: 720, margin: "30px auto", padding: 16 }}>
+    <div style={{ maxWidth: 600, margin: "30px auto", padding: 16 }}>
       <h1>GitHub User Search</h1>
-      <form onSubmit={onSearch} style={{ display: "flex", gap: 8 }}>
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search GitHub users…"
+      <Search onSearch={handleSearch} />
+
+      {loading && <p>Loading...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      {user && (
+        <div
           style={{
-            flex: 1,
-            padding: 10,
-            borderRadius: 8,
+            marginTop: 20,
+            padding: 16,
             border: "1px solid #ddd",
+            borderRadius: 10,
           }}
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          style={{ padding: "10px 16px" }}
         >
-          {loading ? "Searching…" : "Search"}
-        </button>
-      </form>
-
-      {error && <p style={{ color: "crimson" }}>{error}</p>}
-
-      <div style={{ display: "grid", gap: 10, marginTop: 16 }}>
-        {results.map((u) => (
-          <UserCard key={u.id} user={u} />
-        ))}
-      </div>
+          <img
+            src={user.avatar_url}
+            alt={user.login}
+            width="100"
+            style={{ borderRadius: "50%" }}
+          />
+          <h2>{user.login}</h2>
+          <p>{user.name}</p>
+          <a href={user.html_url} target="_blank" rel="noreferrer">
+            View Profile
+          </a>
+        </div>
+      )}
     </div>
   );
 }
