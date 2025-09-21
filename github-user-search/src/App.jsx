@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Search from "./components/Search";
-import { fetchUserData } from "./services/github";
+import { fetchUserData } from "./services/githubService";
 
 export default function App() {
   const [user, setUser] = useState(null);
