@@ -16,8 +16,16 @@ export const fetchUserData = async (username) => {
   return data;
 };
 
-export const searchUsersAdvanced = async (query) => {
-  const url = `https://api.github.com/search/users?q=${query}`;
+export const searchUsersAdvanced = async ({
+  query = "",
+  location = "",
+  minRepos = "",
+}) => {
+  let searchQuery = query;
+  if (location) searchQuery += `+location:${location}`;
+  if (minRepos) searchQuery += `+repos:>=${minRepos}`;
+
+  const url = `https://api.github.com/search/users?q=${searchQuery}`;
   const { data } = await axios.get(url);
   return data;
 };
