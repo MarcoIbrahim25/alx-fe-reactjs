@@ -8,10 +8,8 @@ export default function AddRecipeForm() {
   });
   const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const validate = () => {
     const e = {};
@@ -42,7 +40,7 @@ export default function AddRecipeForm() {
       steps: stp,
     };
     console.log("Submitted recipe:", payload);
-    alert("Recipe submitted (check console).");
+    alert("Recipe submitted successfully (check console).");
     setForm({ title: "", ingredients: "", steps: "" });
   };
 
@@ -56,17 +54,14 @@ export default function AddRecipeForm() {
           onChange={handleChange}
           rows={5}
           placeholder={placeholder}
-          autoComplete="off"
           className="mt-1 w-full rounded-xl border bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         />
       ) : (
         <input
-          type="text"
           name={name}
           value={form[name]}
           onChange={handleChange}
           placeholder={placeholder}
-          autoComplete="off"
           className="mt-1 w-full rounded-xl border bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         />
       )}
@@ -80,7 +75,8 @@ export default function AddRecipeForm() {
     <section className="max-w-2xl mx-auto px-4 py-8">
       <div className="bg-white rounded-xl shadow p-6">
         <h1 className="text-2xl md:text-3xl font-bold">Add New Recipe</h1>
-        <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
+
+        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <Field
             label="Title"
             name="title"
@@ -98,6 +94,7 @@ export default function AddRecipeForm() {
             textarea
             placeholder={"Boil pasta\nMix sauce\n..."}
           />
+
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <button
               type="submit"
