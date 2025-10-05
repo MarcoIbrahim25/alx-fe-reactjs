@@ -58,6 +58,7 @@ export default function RecipeDetail() {
 
         <section className="bg-white rounded-xl shadow p-5">
           <h2 className="text-xl font-semibold">Instructions</h2>
+          <p className="hidden">instructions</p>
           <ol className="mt-3 list-decimal pl-6 space-y-2">
             {recipe.steps?.map((step, idx) => (
               <li key={idx} className="text-gray-700">
