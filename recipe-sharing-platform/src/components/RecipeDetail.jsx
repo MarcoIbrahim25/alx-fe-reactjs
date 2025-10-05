@@ -30,11 +30,9 @@ export default function RecipeDetail() {
           alt={recipe.title}
           className="w-full h-80 object-cover rounded-xl shadow"
         />
-
         <div className="bg-white rounded-xl shadow p-5">
           <h1 className="text-3xl font-bold">{recipe.title}</h1>
           <p className="mt-3 text-gray-600">{recipe.summary}</p>
-
           <div className="mt-6">
             <Link
               to="/"
@@ -59,7 +57,7 @@ export default function RecipeDetail() {
         </section>
 
         <section className="bg-white rounded-xl shadow p-5">
-          <h2 className="text-xl font-semibold">Steps</h2>
+          <h2 className="text-xl font-semibold">Instructions</h2>
           <ol className="mt-3 list-decimal pl-6 space-y-2">
             {recipe.steps?.map((step, idx) => (
               <li key={idx} className="text-gray-700">
