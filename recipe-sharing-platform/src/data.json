@@ -3,24 +3,79 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/450x300?text=Carbonara"
+    "image": "https://via.placeholder.com/800x520?text=Carbonara",
+    "ingredients": [
+      "200g spaghetti",
+      "2 eggs",
+      "50g grated parmesan",
+      "80g bacon or pancetta",
+      "Salt & cracked black pepper"
+    ],
+    "steps": [
+      "Cook spaghetti in salted water until al dente.",
+      "Fry bacon until crisp; set aside.",
+      "Whisk eggs with parmesan and pepper.",
+      "Toss hot pasta with bacon, then off heat mix in egg-cheese until creamy.",
+      "Adjust seasoning and serve immediately."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
-    "image": "https://via.placeholder.com/450x300?text=Tikka+Masala"
+    "image": "https://via.placeholder.com/800x520?text=Tikka+Masala",
+    "ingredients": [
+      "500g chicken, cubed",
+      "1 cup yogurt",
+      "2 tsp garam masala",
+      "1 onion, chopped",
+      "400g tomato puree",
+      "1/2 cup cream",
+      "Salt & oil"
+    ],
+    "steps": [
+      "Marinate chicken in yogurt, spices, and salt (30+ min).",
+      "Sear chicken until mostly cooked; set aside.",
+      "Sauté onion; add tomato puree and simmer.",
+      "Stir in cream and chicken; simmer until thick.",
+      "Serve with rice or naan."
+    ]
   },
   {
     "id": 3,
     "title": "Mediterranean Salad",
     "summary": "Crisp veggies with olives, feta, and lemon dressing.",
-    "image": "https://via.placeholder.com/450x300?text=Mediterranean+Salad"
+    "image": "https://via.placeholder.com/800x520?text=Mediterranean+Salad",
+    "ingredients": [
+      "Cucumber, tomatoes, red onion",
+      "Kalamata olives",
+      "Feta cheese",
+      "Olive oil, lemon juice, oregano, salt"
+    ],
+    "steps": [
+      "Chop vegetables into bite-size pieces.",
+      "Whisk olive oil, lemon, oregano, and salt.",
+      "Toss veggies with olives, feta, and dressing."
+    ]
   },
   {
     "id": 4,
     "title": "Creamy Mushroom Soup",
     "summary": "Silky soup made with mushrooms, garlic, and cream.",
-    "image": "https://via.placeholder.com/450x300?text=Mushroom+Soup"
+    "image": "https://via.placeholder.com/800x520?text=Mushroom+Soup",
+    "ingredients": [
+      "400g mushrooms, sliced",
+      "2 cloves garlic, minced",
+      "1 onion, chopped",
+      "2 cups stock",
+      "1/2 cup cream",
+      "Butter, salt, pepper"
+    ],
+    "steps": [
+      "Sauté onion, garlic, and mushrooms in butter.",
+      "Add stock and simmer 10 minutes.",
+      "Blend until smooth (optional).",
+      "Stir in cream, season, and serve."
+    ]
   }
 ]
