@@ -8,7 +8,8 @@ export default function AddRecipeForm() {
   });
   const [errors, setErrors] = useState({});
 
-  const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const validate = () => {
     const e = {};
@@ -26,7 +27,7 @@ export default function AddRecipeForm() {
     return { e, ing, stp };
   };
 
-  const onSubmit = (ev) => {
+  const handleSubmit = (ev) => {
     ev.preventDefault();
     const { e, ing, stp } = validate();
     setErrors(e);
@@ -39,8 +40,7 @@ export default function AddRecipeForm() {
       steps: stp,
     };
     console.log("Submitted recipe:", payload);
-    alert("Recipe submitted (check console).");
-
+    alert("Recipe submitted successfully (check console).");
     setForm({ title: "", ingredients: "", steps: "" });
   };
 
@@ -51,7 +51,7 @@ export default function AddRecipeForm() {
         <textarea
           name={name}
           value={form[name]}
-          onChange={onChange}
+          onChange={handleChange}
           rows={5}
           placeholder={placeholder}
           className="mt-1 w-full rounded-xl border bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -60,7 +60,7 @@ export default function AddRecipeForm() {
         <input
           name={name}
           value={form[name]}
-          onChange={onChange}
+          onChange={handleChange}
           placeholder={placeholder}
           className="mt-1 w-full rounded-xl border bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         />
@@ -76,7 +76,7 @@ export default function AddRecipeForm() {
       <div className="bg-white rounded-xl shadow p-6">
         <h1 className="text-2xl md:text-3xl font-bold">Add New Recipe</h1>
 
-        <form onSubmit={onSubmit} className="mt-6 space-y-4">
+        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <Field
             label="Title"
             name="title"
@@ -89,7 +89,7 @@ export default function AddRecipeForm() {
             placeholder={"200g spaghetti\n2 eggs\n..."}
           />
           <Field
-            label="Preparation steps (one per line)"
+            label="Preparation Steps (one per line)"
             name="steps"
             textarea
             placeholder={"Boil pasta\nMix sauce\n..."}
