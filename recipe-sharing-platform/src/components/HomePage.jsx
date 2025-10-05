@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import data from "../data.json";
 
 export default function HomePage() {
@@ -19,9 +20,10 @@ export default function HomePage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {recipes.map((recipe) => (
-          <div
+          <Link
             key={recipe.id}
-            className="bg-white rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transform transition duration-300 overflow-hidden"
+            to={`/recipes/${recipe.id}`}
+            className="block bg-white rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transform transition duration-300 overflow-hidden"
           >
             <img
               src={recipe.image}
@@ -33,11 +35,8 @@ export default function HomePage() {
               <p className="text-gray-600 mt-2 line-clamp-2">
                 {recipe.summary}
               </p>
-              <button className="mt-3 inline-block px-4 py-2 text-sm rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">
-                View Recipe
-              </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
