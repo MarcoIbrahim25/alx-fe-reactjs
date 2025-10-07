@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import TodoList from "../src/components/TodoList";
+import Todolist from "../src/components/Todolist";
 
 function setup() {
   render(<TodoList />);
