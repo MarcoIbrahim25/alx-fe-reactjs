@@ -8,7 +8,7 @@ export default function Blog() {
       <ul>
         {ids.map((id) => (
           <li key={id}>
-            <Link to={`/posts/${id}`}>Open Post {id}</Link>
+            <Link to={`/blog/${id}`}>Open Post {id}</Link>
           </li>
         ))}
       </ul>

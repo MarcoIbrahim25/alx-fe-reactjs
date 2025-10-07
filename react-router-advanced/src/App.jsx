@@ -6,8 +6,6 @@ import Blog from "./components/Blog";
 import BlogPost from "./components/BlogPost";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-import ProfileDetails from "./components/ProfileDetails";
-import ProfileSettings from "./components/ProfileSettings";
 import NotFound from "./components/NotFound";
 
 export default function App() {
@@ -23,11 +21,11 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="posts/:id" element={<BlogPost />} />
-            <Route path="login" element={<Login />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/login" element={<Login />} />
             <Route
-              path="profile/*"
+              path="/profile"
               element={
                 <ProtectedRoute>
                   <Profile />
