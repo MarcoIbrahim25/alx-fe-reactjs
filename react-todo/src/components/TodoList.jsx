@@ -18,9 +18,7 @@ export default function TodoList() {
   };
 
   const toggleTodo = (id) =>
-    setTodos((list) =>
-      list.map((td) => (td.id === id ? { ...td, completed: !td.completed } : td))
-    );
+    setTodos((list) => list.map((td) => (td.id === id ? { ...td, completed: !td.completed } : td)));
 
   const deleteTodo = (id) =>
     setTodos((list) => list.filter((td) => td.id !== id));
@@ -30,10 +28,10 @@ export default function TodoList() {
       <h2>TodoList</h2>
       <form onSubmit={addTodo} aria-label="add-form">
         <input
+          aria-label="todo-input"
           placeholder="Add a new todo"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          aria-label="todo-input"
         />
         <button type="submit">Add</button>
       </form>

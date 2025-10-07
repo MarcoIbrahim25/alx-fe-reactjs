@@ -1,17 +1,18 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import TodoList from "../src/components/TodoList";
 
 function setup() {
   render(<TodoList />);
 }
 
-test("initial render shows demo todos", () => {
+test("renders initial demo todos", () => {
   setup();
   expect(screen.getByText("Learn React")).toBeInTheDocument();
   expect(screen.getByText("Write tests")).toBeInTheDocument();
 });
 
-test("can add a new todo", () => {
+test("adds a new todo", () => {
   setup();
   const input = screen.getByLabelText("todo-input");
   const form = screen.getByLabelText("add-form");
@@ -20,20 +21,18 @@ test("can add a new todo", () => {
   expect(screen.getByText("New task")).toBeInTheDocument();
 });
 
-test("can toggle a todo between completed and not completed", () => {
+test("toggles a todo completed state", () => {
   setup();
-  const item = screen.getByText("Learn React");
-  const liSpan = item;
+  const span = screen.getByText("Learn React");
   const checkbox = screen.getAllByRole("checkbox")[0];
-  expect(liSpan).toHaveStyle({ textDecoration: "none" });
+  expect(span).toHaveStyle({ textDecoration: "none" });
   fireEvent.click(checkbox);
-  expect(liSpan).toHaveStyle({ textDecoration: "line-through" });
+  expect(span).toHaveStyle({ textDecoration: "line-through" });
 });
 
-test("can delete a todo", () => {
+test("deletes a todo", () => {
   setup();
-  const toDelete = screen.getByText("Write tests");
-  const deleteBtn = screen.getByLabelText(/delete-/i);
-  fireEvent.click(deleteBtn);
+  const btn = screen.getByLabelText(/delete-/i);
+  fireEvent.click(btn);
   expect(screen.queryByText("Write tests")).not.toBeInTheDocument();
 });
