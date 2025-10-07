@@ -26,7 +26,12 @@ export default function PostsComponent() {
   const { data, isLoading, isError, error, refetch, isFetching } = useQuery(
     "posts",
     fetchPosts,
-    { staleTime: 60_000, cacheTime: 300_000, refetchOnWindowFocus: false }
+    {
+      keepPreviousData: true,
+      staleTime: 60000,
+      cacheTime: 300000,
+      refetchOnWindowFocus: false,
+    }
   );
 
   const addPost = useMutation(createPost, {
@@ -72,13 +77,16 @@ export default function PostsComponent() {
           {addPost.isLoading ? "Adding..." : "Add Post"}
         </button>
         <button onClick={() => refetch()} disabled={isFetching}>
-          {isFetching ? "Refreshing..." : "Refresh"}
+          {isFetching ? "Refetching..." : "Refetch"}
         </button>
       </div>
 
       <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: 8 }}>
         {(data || []).slice(0, 20).map((p) => (
-          <li key={p.id} style={{ padding: 12, border: "1px solid #ddd", borderRadius: 8 }}>
+          <li
+            key={p.id}
+            style={{ padding: 12, border: "1px solid #ddd", borderRadius: 8 }}
+          >
             <strong>#{p.id}</strong> — {p.title}
           </li>
         ))}
