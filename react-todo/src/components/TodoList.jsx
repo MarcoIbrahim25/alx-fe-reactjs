@@ -5,7 +5,7 @@ const demo = [
   { id: 2, text: "Write tests", completed: true }
 ];
 
-export default function TodoList() {
+export default function Todolist() {
   const [todos, setTodos] = useState(demo);
   const [text, setText] = useState("");
 
@@ -25,7 +25,7 @@ export default function TodoList() {
 
   return (
     <div>
-      <h2>TodoList</h2>
+      <h2>Todolist</h2>
       <form onSubmit={addTodo} aria-label="add-form">
         <input
           aria-label="todo-input"
