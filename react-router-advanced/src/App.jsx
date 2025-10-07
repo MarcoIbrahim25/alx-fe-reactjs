@@ -26,20 +26,14 @@ export default function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="posts/:id" element={<BlogPost />} />
             <Route path="login" element={<Login />} />
-
             <Route
-              path="profile"
+              path="profile/*"
               element={
                 <ProtectedRoute>
                   <Profile />
                 </ProtectedRoute>
               }
-            >
-              <Route index element={<ProfileDetails />} />
-              <Route path="details" element={<ProfileDetails />} />
-              <Route path="settings" element={<ProfileSettings />} />
-            </Route>
-
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
