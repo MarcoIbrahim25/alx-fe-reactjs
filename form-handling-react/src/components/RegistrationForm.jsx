@@ -22,9 +22,8 @@ export default function RegistrationForm() {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const onChange = (e) => {
+  const onChange = (e) =>
     setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
-  };
   const onBlur = (e) => setTouched((t) => ({ ...t, [e.target.name]: true }));
 
   const onSubmit = async (e) => {
@@ -48,6 +47,7 @@ export default function RegistrationForm() {
   };
 
   const showError = (name) => touched[name] && errors[name];
+  const { username, email, password } = values;
 
   return (
     <form onSubmit={onSubmit} style={{ maxWidth: 420 }}>
@@ -57,7 +57,7 @@ export default function RegistrationForm() {
       <input
         name="username"
         type="text"
-        value={values.username}
+        value={username}
         onChange={onChange}
         onBlur={onBlur}
         placeholder="e.g. marco"
@@ -70,7 +70,7 @@ export default function RegistrationForm() {
       <input
         name="email"
         type="email"
-        value={values.email}
+        value={email}
         onChange={onChange}
         onBlur={onBlur}
         placeholder="name@example.com"
@@ -83,7 +83,7 @@ export default function RegistrationForm() {
       <input
         name="password"
         type="password"
-        value={values.password}
+        value={password}
         onChange={onChange}
         onBlur={onBlur}
         placeholder="min 6 characters"
