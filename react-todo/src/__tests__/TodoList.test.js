@@ -1,7 +1,6 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TodoList from "../src/components/TodoList";
-import Todolist from "../src/components/Todolist";
+import TodoList from "../components/TodoList";
 
 function setup() {
   render(<TodoList />);
@@ -33,7 +32,9 @@ test("toggles a todo completed state", () => {
 
 test("deletes a todo", () => {
   setup();
-  const btn = screen.getByLabelText(/delete-/i);
-  fireEvent.click(btn);
+  const li = screen.getByText("Write tests").closest("li");
+  expect(li).toBeInTheDocument();
+  const delBtn = within(li).getByRole("button", { name: /delete-/i });
+  fireEvent.click(delBtn);
   expect(screen.queryByText("Write tests")).not.toBeInTheDocument();
 });
