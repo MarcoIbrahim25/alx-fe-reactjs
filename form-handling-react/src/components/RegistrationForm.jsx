@@ -5,12 +5,13 @@ const initial = { username: "", email: "", password: "" };
 
 function validate(values) {
   const errors = {};
-  if (!values.username.trim()) errors.username = "Username is required";
-  if (!values.email.trim()) errors.email = "Email is required";
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))
+  const { username, email, password } = values;
+  if (!username.trim()) errors.username = "Username is required";
+  if (!email.trim()) errors.email = "Email is required";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     errors.email = "Email format is invalid";
-  if (!values.password) errors.password = "Password is required";
-  else if (values.password.length < 6)
+  if (!password) errors.password = "Password is required";
+  else if (password.length < 6)
     errors.password = "Password must be at least 6 characters";
   return errors;
 }
@@ -24,7 +25,8 @@ export default function RegistrationForm() {
 
   const onChange = (e) =>
     setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
-  const onBlur = (e) => setTouched((t) => ({ ...t, [e.target.name]: true }));
+  const onBlur = (e) =>
+    setTouched((t) => ({ ...t, [e.target.name]: true }));
 
   const onSubmit = async (e) => {
     e.preventDefault();
